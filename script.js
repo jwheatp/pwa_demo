@@ -13,10 +13,14 @@ function activateCamera() {
   .catch(function(err) { alert(err.name + ": " + err.message); }); // always check for errors at the end.
 }
 
-
-if (navigator.serviceWorker != null) {
-  navigator.serviceWorker.register('service-worker.js')
-  .then(function(registration) {
-    console.log('Registered events at scope: ', registration.scope);
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+      // Registration was successful
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }, function(err) {
+      // registration failed :(
+      console.log('ServiceWorker registration failed: ', err);
+    });
   });
 }

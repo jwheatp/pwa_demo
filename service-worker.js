@@ -1,3 +1,7 @@
+// ne pas toucher à ce fichier
+// on va l'utiliser en boîte noire pour le moment
+// et on verra ensemble un peu plus tard de quoi il s'agit :)
+
 var cacheStorageKey = 'minimal-pwa-8'
 
 var cacheList = [
@@ -34,20 +38,6 @@ self.addEventListener('activate', function(e) {
     ).then(() => {
       console.log('Clients claims.')
       return self.clients.claim()
-    })
-  )
-})
-
-self.addEventListener('fetch', function(e) {
-  // console.log('Fetch event:', e.request.url)
-  e.respondWith(
-    caches.match(e.request).then(function(response) {
-      if (response != null) {
-        console.log('Using cache for:', e.request.url)
-        return response
-      }
-      console.log('Fallback to fetch:', e.request.url)
-      return fetch(e.request.url)
     })
   )
 })

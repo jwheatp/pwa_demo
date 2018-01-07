@@ -3,7 +3,7 @@
   "name": "Ma Super App !",
   "icons": [
     {
-      "src": "/images/icon.png",
+      "src": "icon.png",
       "sizes": "512x512",
       "type": "image/png"
     }
